@@ -1,7 +1,7 @@
 require 'pry'
 
 class Artist
-  attr_accessor :name, :songs
+  attr_accessor :name, :songs, :genres
 
   @@all = []
 
@@ -18,11 +18,11 @@ class Artist
 
   def new_song(song, genre)
     new_song = Song.new(song, self, genre)
-    binding.pry
     self.songs << new_song 
+    self.genres << genre
+    self.songs << genre 
     new_song 
   end 
-  
-  
+
   
 end

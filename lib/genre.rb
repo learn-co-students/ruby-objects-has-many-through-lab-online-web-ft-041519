@@ -1,16 +1,17 @@
 class Genre 
-  attr_accessor :name, :songs
+  attr_accessor :name, :songs, :artists
   
   @@all = []
   
   def initialize(name)
     @name = name
     @songs = []
+    @artists = []
     @@all << self 
   end 
   
   def songs 
-    self.songs << Song.all
+    @songs = Song.all.select{|x| x.genre.name == self.name} 
   end 
   
   def self.all 
@@ -18,7 +19,9 @@ class Genre
   end 
   
   def artists
-    self.artist << Song.artist
+    #binding.pry
+    @artists = Artist.all..select{|x| x.genre.name == self.name} 
+    binding.pry
   end 
   
 end 
