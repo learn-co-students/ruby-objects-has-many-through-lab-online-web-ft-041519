@@ -19,9 +19,7 @@ class Genre
   end 
   
   def artists
-    #binding.pry
-    @artists = Artist.all..select{|x| x.genre.name == self.name} 
-    binding.pry
+    @artists = self.songs.collect{|x| x.artist} 
   end 
   
 end 
