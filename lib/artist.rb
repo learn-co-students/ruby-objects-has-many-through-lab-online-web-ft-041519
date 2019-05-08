@@ -18,7 +18,7 @@ class Artist
   end
 
   def genres
-    songs.map(&:genre)
+      self.songs.collect {|song| song.genre} 
   end
 
   def self.all
