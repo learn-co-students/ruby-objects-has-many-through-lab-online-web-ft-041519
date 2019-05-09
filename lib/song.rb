@@ -18,12 +18,4 @@ class Song
     @@all
   end
 
-  def artist
-    @artist
-  end
-
-  def genre
-    @genre
-  end
-
 end

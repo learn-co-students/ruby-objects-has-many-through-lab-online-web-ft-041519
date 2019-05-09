@@ -8,14 +8,19 @@ class Doctor
   def initialize(name)
     @name = name
     @@all << self
+    @appointments = []
+    @patients = []
   end
 
   def self.all
     @@all
   end
 
-  def new_appointment(date, patient)
-    @appointments << Appointment.new()
+  def new_appointment(patient, date)
+    appointment = Appointment.new(date, patient, self)
+    @appointments << appointment
+    @patients << appointment.patient
+    appointment
   end
 
 end
