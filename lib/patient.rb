@@ -8,10 +8,13 @@ class Patient
   def initialize(name)
     @name = name
     @@all << self
+    @appointments = []
   end
 
   def new_appointment(doctor, date)
-    @appointments << Appointment.new(date, self, doctor)
+    appointment = Appointment.new(date, self, doctor)
+    @appointments << appointment
+    appointment
   end
 
   def self.all
@@ -19,7 +22,11 @@ class Patient
   end
 
   def appointments
-    Appointment.all.select { |song| song.artist = self }
+    Appointment.all.select { |appointment| appointment.patient = self }
+  end
+
+  def doctors
+    appointments.map { |appointment| appointment.doctor }
   end
 
 
