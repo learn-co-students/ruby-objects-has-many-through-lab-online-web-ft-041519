@@ -4,11 +4,11 @@ class Artist
   attr_accessor :name
 
   @@all = []
-  @@songs = []
-  @@genres = []
+
   def initialize(name)
     @name = name
-
+    @songs = []
+    @genres = []
     @@all << self
   end
 
@@ -17,17 +17,24 @@ class Artist
   end
 
   def new_song(name, genre)
-    song = Song.new(name, self, genre)
-    @@songs << song
-    @@genres << genre
-  #binding.pry
+    Song.new(name, self, genre)
   end
 
   def songs
+    Song.all.each do |song|
+      if song.artist == self
+        @songs << song
+      end
+    end
     @songs
   end
 
   def genres
+    Song.all.each do |song|
+      if song.artist == self
+        @genres << song.genre
+      end
+    end
     @genres
   end
 end

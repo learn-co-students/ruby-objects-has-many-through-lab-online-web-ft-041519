@@ -15,11 +15,4 @@ attr_accessor :name, :artist, :genre
     @@all
   end
 
-  def genre
-    @genre
-  end
-
-  def artist
-    @artist
-  end
 end
